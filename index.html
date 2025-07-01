@@ -44,7 +44,8 @@
       const city = document.getElementById('cityInput').value;
 
       const currentUrl = `${proxy}https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
-      const forecastUrl = `${proxy}https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`;
+const forecastUrl = `${proxy}https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`;
+
 
       fetch(currentUrl)
         .then(res => res.json())
