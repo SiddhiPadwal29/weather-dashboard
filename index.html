@@ -28,23 +28,22 @@
       <input type="text" id="cityInput" placeholder="Enter city name" required class="form-control w-50 d-inline-block">
       <button type="submit" class="btn btn-primary">Get Weather</button>
     </form>
+
     <div id="currentWeather" class="weather-result mt-4"></div>
     <h4 class="mt-5">5-Day Forecast</h4>
     <div id="forecast" class="d-flex flex-wrap justify-content-center"></div>
   </div>
 
   <script>
-    const API_KEY = '08f79308c0bc933096686b19c26de1fa'; // Replace with your OpenWeatherMap API key
+    const API_KEY = '08f79308c0bc933096686b19c26de1fa'; // ✅ Replace with your OpenWeatherMap API key
+    const proxy = 'https://corsproxy.io/?';
 
     document.getElementById('weatherForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const city = document.getElementById('cityInput').value;
-      getWeather(city);
-    });
 
-    function getWeather(city) {
-      const currentUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
-      const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`;
+      const currentUrl = `${proxy}https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+      const forecastUrl = `${proxy}https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`;
 
       fetch(currentUrl)
         .then(res => res.json())
@@ -76,10 +75,9 @@
                 </div>
               `;
             }).join('');
-
           document.getElementById('forecast').innerHTML = forecastHTML;
         });
-    }
+    });
   </script>
 </body>
 </html>
